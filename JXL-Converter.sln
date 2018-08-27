@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JXL-Converter", "JXL-Converter\JXL-Converter.csproj", "{DEA349DC-E3C3-4276-8A87-6CA395DAD638}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "JXLSetup", "JXLSetup\JXLSetup.vdproj", "{E94C92E4-EDE1-4DD4-B1AB-C1355A499155}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEA349DC-E3C3-4276-8A87-6CA395DAD638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA349DC-E3C3-4276-8A87-6CA395DAD638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA349DC-E3C3-4276-8A87-6CA395DAD638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA349DC-E3C3-4276-8A87-6CA395DAD638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E94C92E4-EDE1-4DD4-B1AB-C1355A499155}.Debug|Any CPU.ActiveCfg = Debug
+		{E94C92E4-EDE1-4DD4-B1AB-C1355A499155}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F1BB55B-924E-41DA-BC0E-439912F48C04}
+	EndGlobalSection
+EndGlobal
