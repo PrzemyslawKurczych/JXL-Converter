@@ -67,8 +67,6 @@ namespace JXL_Converter
                         if (PKTname.Contains(subPKTname) == true)
                         {
                             //Obliczenie przyrostów współrzędnych i odległości między punktami *_REF1 i *_REF2 a punktem wcinanym
-                            double N = Convert.ToDouble(XmlDoc.GetElementsByTagName("North").Item(i - 1 + (CountSum)).InnerText);
-                             N = Convert.ToDouble(XmlDoc.GetElementsByTagName("North").Item(i + 1 + (CountSum)).InnerText);
                             //double Name = Convert.ToDouble(XmlDoc.GetElementsByTagName("Name").Item(i - 1 + (CountSum)).InnerText);
                             double deltaN = Convert.ToDouble(XmlDoc.GetElementsByTagName("North").Item(i-1 + (CountSum)).InnerText) - Convert.ToDouble(XmlDoc.GetElementsByTagName("North").Item(i + 1 + (CountSum)).InnerText);
                             double deltaE = Convert.ToDouble(XmlDoc.GetElementsByTagName("East").Item(i-1 + (CountSum)).InnerText) - Convert.ToDouble(XmlDoc.GetElementsByTagName("East").Item(i + 1 + (CountSum)).InnerText);
