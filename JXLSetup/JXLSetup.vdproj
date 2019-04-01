@@ -145,11 +145,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_18F2317A98DD0A77535B9E47DC61746F"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -245,15 +240,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:JXLConverter"
-        "ProductCode" = "8:{E916382F-6D8A-43D9-9973-92C34E49F545}"
-        "PackageCode" = "8:{8BD28DCA-0099-4D09-9BED-1E64D74C5478}"
+        "ProductCode" = "8:{6563A621-7960-4B5F-86E7-A7013DF03D11}"
+        "PackageCode" = "8:{98D0FB59-D05E-4CAE-BE42-CEA3816745F9}"
         "UpgradeCode" = "8:{A50EF61C-BEB3-49BB-BEA3-9535B18A1978}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.3"
+        "ProductVersion" = "8:1.0.4"
         "Manufacturer" = "8:GeoRox"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

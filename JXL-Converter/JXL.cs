@@ -41,7 +41,7 @@ namespace JXL_Converter
             OpenFileDialog ofd = new OpenFileDialog
             {
                 InitialDirectory = "c:\\",
-                Filter = "Trimlbe JXL|*.jxl"
+                Filter = "Trimble JXL|*.jxl"
             };
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -51,7 +51,11 @@ namespace JXL_Converter
                 string subPKTname = null;
                 string domiar2;
                 string domiar1;
+                string DistanceTwoValue;
+                string DistanceOneValue;
                 string offset1 = "0";
+                string PointOneName;
+                string PointTwoName;
                 XmlDocument XmlDoc = new XmlDocument();
                 try
                 {
@@ -114,7 +118,54 @@ namespace JXL_Converter
                         {
                             offset1 = (H0 - (H1 + H2) / 2).ToString();
                         }
-                        XmlNodeList fieldbooklist = XmlDoc.SelectNodes("//FieldBook//PointRecord");
+                            //sprawdzanie czy punkt jest na prawo od REF1 REF2, Kąt w radianach między Ref1 - Ref2 - Punkt musi być pomiędzy 0 - pi
+                            double deltaN20 = X2 - X0;
+                            double deltaE20 = Y2 - Y0;
+                            double phi20 = Math.Atan2(deltaE20, deltaN20);
+                            if (deltaN20 < 0 && deltaE20 > 0 )
+                            {
+                                phi20 = phi20 + Math.PI;
+                            }
+                            else if (deltaN20 <0 && deltaE20 <0)
+                            {
+                                phi20 = phi20 + Math.PI;
+                            }
+                            else if (deltaN20 > 0 && deltaE20 < 0)
+                            {
+                                phi20 = phi20 + 2*Math.PI;
+                            }
+                            double deltaN21 = X2 - X1;
+                            double deltaE21 = Y2 - Y1;
+                            double phi21 = Math.Atan2(deltaE21, deltaN21);
+                            if (deltaN21 < 0 && deltaE21 > 0)
+                            {
+                                phi21 = phi21 + Math.PI;
+                            }
+                            else if (deltaN21 < 0 && deltaE21 < 0)
+                            {
+                                phi21 = phi21 + Math.PI;
+                            }
+                            else if (deltaN21 > 0 && deltaE21 < 0)
+                            {
+                                phi21 = phi21 + 2 * Math.PI;
+                            }
+                            double alpha120 = phi21 - phi20;
+                            if (alpha120 < Math.PI)
+                            {
+                                PointOneName = Ref1Name;
+                                PointTwoName = Ref2Name;
+                                DistanceOneValue = domiar1;
+                                DistanceTwoValue = domiar2;
+                            }
+                            else
+                            {
+                                PointOneName = Ref2Name;
+                                PointTwoName = Ref1Name;
+                                DistanceOneValue = domiar2;
+                                DistanceTwoValue = domiar1;
+                            }
+
+                            XmlNodeList fieldbooklist = XmlDoc.SelectNodes("//FieldBook//PointRecord");
                             foreach (XmlNode pointrecord in fieldbooklist)
                             {
                                 foreach (XmlNode child in pointrecord.ChildNodes)
@@ -135,16 +186,16 @@ namespace JXL_Converter
                                         Method.InnerText = "DistanceDistanceIntersection";
                                         EnteredData.AppendChild(Method);
                                         PointOne = XmlDoc.CreateNode(XmlNodeType.Element, "PointOne", "");
-                                        PointOne.InnerText = Ref1Name;
+                                        PointOne.InnerText = PointOneName;
                                         EnteredData.AppendChild(PointOne);
                                         PointTwo = XmlDoc.CreateNode(XmlNodeType.Element, "PointTwo", "");
-                                        PointTwo.InnerText = Ref2Name;
+                                        PointTwo.InnerText = PointTwoName;
                                         EnteredData.AppendChild(PointTwo);
                                         DistanceOne = XmlDoc.CreateNode(XmlNodeType.Element, "DistanceOne", "");
-                                        DistanceOne.InnerText = domiar1;
+                                        DistanceOne.InnerText = DistanceOneValue;
                                         EnteredData.AppendChild(DistanceOne);
                                         DistanceTwo = XmlDoc.CreateNode(XmlNodeType.Element, "DistanceTwo", "");
-                                        DistanceTwo.InnerText = domiar2;
+                                        DistanceTwo.InnerText = DistanceTwoValue;
                                         EnteredData.AppendChild(DistanceTwo);
                                         VerticalOffset = XmlDoc.CreateNode(XmlNodeType.Element, "VerticalOffset", "");
                                         VerticalOffset.InnerText = offset1;
